@@ -12,15 +12,15 @@ from datetime import datetime, date
 from sqlalchemy import func
 today = date.today()
 app = Flask(__name__)  # creating the Flask class object
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:pallav123@localhost/mps'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:abc123@localhost/mps'
 db = SQLAlchemy(app)
 app.secret_key="Don't tell"
 app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT='465',
     MAIL_USE_SSL= True,
-    MAIL_USERNAME="pallavgarg04@gmail.com",
-    MAIL_PASSWORD="samsung@412"
+    MAIL_USERNAME="",
+    MAIL_PASSWORD=""
 )
 mail=Mail(app)
 class Contacts(db.Model):
@@ -86,7 +86,7 @@ def contact():
             flash("Send :)")
             mail.send_message('New Message from '+name+"@Moneyrep",
                               sender=email,
-                              recipients=["pallavgarg04@gmail.com"],
+                              recipients=[""],
                               body=message+"\n"+phone
                               )
         else:
